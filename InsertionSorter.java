@@ -10,7 +10,8 @@ public class InsertionSorter extends Sorter {
       Construct an instance to process the user's data
      */
     public InsertionSorter(  ArrayList< String> usersData) {
-        // your code here, if necessary
+        super();
+	elements.mySort();
     }
     
 
@@ -18,6 +19,16 @@ public class InsertionSorter extends Sorter {
       sort the user's data, implementing insertion sort
      */
     public void mySort() {
-        // your code here
+        insertionSort(elements);
+    }
+
+    public static void insertionSort(ArrayList<String> unsorted) {
+	for (int index = 1; index < elements.size(); index++) {
+	    insert1(unsorted, index);
+	}
+    }
+
+    public void insert1(ArrayList<String> unsorted) {
+	
     }
 }
