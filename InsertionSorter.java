@@ -10,8 +10,8 @@ public class InsertionSorter extends Sorter {
       Construct an instance to process the user's data
      */
     public InsertionSorter(  ArrayList< String> usersData) {
-        super();
-	elements.mySort();
+        super(usersData);
+        this.mySort();
     }
     
 
@@ -22,13 +22,32 @@ public class InsertionSorter extends Sorter {
         insertionSort(elements);
     }
 
-    public static void insertionSort(ArrayList<String> unsorted) {
+    public void insertionSort(ArrayList<String> unsorted) {
 	for (int index = 1; index < elements.size(); index++) {
 	    insert1(unsorted, index);
 	}
-    }
+}
 
-    public void insert1(ArrayList<String> unsorted) {
-	
+    public void insert1(ArrayList<String> unsorted, int numSorted) {
+        String valueToInsert = elements.get(numSorted);
+        boolean inserted = false;
+        for (int indexToCompare = numSorted - 1;
+             !inserted && indexToCompare >= 0;
+             indexToCompare--){
+                 if(indexToCompare == 0 && valueToInsert.compareTo(elements.get(0)) < 0) {
+                    elements.set(1, elements.get(0));
+                    elements.set(0, valueToInsert);
+                    inserted = true;
+                }
+                else {
+                    if (valueToInsert.compareTo(elements.get(indexToCompare)) < 0) {
+                        elements.set(indexToCompare+1, elements.get(indexToCompare));
+                    }
+                    else {
+                        elements.set(indexToCompare+1, valueToInsert);
+                        inserted = true;
+                    }
+                }
+             }
     }
 }
